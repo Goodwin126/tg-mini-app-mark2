@@ -51,7 +51,8 @@
       class="m-auto w-14 h-14 focus:outline-none transition transform hover:scale-105 hover:-translate-y-1"
       src="/study.png"
     />
-    <img
+    <imggit
+      status
       class="m-auto w-14 h-14 focus:outline-none transition transform hover:scale-105 hover:-translate-y-1"
       src="/awards.png"
     />
