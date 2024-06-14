@@ -7,7 +7,6 @@ import Menu from './components/Menu.vue'
   <div class="flex flex-col">
     <Header />
     <Menu />
-    <h1>версии 5.0</h1>
   </div>
 </template>
 
