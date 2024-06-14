@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-  <div class="flex grid grid-cols-4 mt-10">
+  <div class="flex grid grid-cols-4 mt-6">
     <img
       class="m-auto w-14 h-14 focus:outline-none transition transform hover:scale-105 hover:-translate-y-1"
       src="/diary.png"
@@ -60,9 +60,9 @@
       class="m-auto w-14 h-14 focus:outline-none transition transform hover:scale-105 hover:-translate-y-1"
       src="/results.png"
     />
-    <p class="m-auto text-2xs font-bold text-black hover:text-blue-800">Дневник</p>
-    <p class="m-auto text-2xs font-bold text-black hover:text-blue-800">Изучить</p>
-    <p class="m-auto text-2xs font-bold text-black hover:text-blue-800">Награды</p>
-    <p class="m-auto text-2xs font-bold text-black hover:text-blue-800">Результаты</p>
+    <p class="m-auto text-sm font-bold text-blue-80 hover:text-blue-800">Дневник</p>
+    <p class="m-auto text-xl font-bold text-black hover:text-blue-800">Изучить</p>
+    <p class="m-auto text-lg font-bold text-black hover:text-blue-800">Награды</p>
+    <p class="m-auto text-base font-bold text-black hover:text-blue-800">Результаты</p>
   </div>
 </template>
