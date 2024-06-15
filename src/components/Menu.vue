@@ -3,13 +3,13 @@
     <div class="flex flex-col">
       <div class="flex grid grid-cols-3">
         <img class="flex-justify-left m-auto" src="/Ellipse 3.png" />
-        <div class="flex flex-col m-auto mt-2.5">
+        <div class="flex flex-col m-auto mt-2.5 ml-0">
           <p class="text-lg text-white">Вода 1,5 л</p>
           <img class="m-auto ml-0" src="/Runner_4.png" />
           <p class="text-xs text-gray-400">рекомендовано 2,3 л</p>
         </div>
         <img
-          class="m-auto hover:cursor-pointer transition transform hover:scale-105"
+          class="m-auto hover:cursor-pointer transition transform hover:scale-105 isLarge:scale-120"
           src="/Button.png"
         />
         <img class="flex-justify-left m-auto" src="/Ellipse 4.png" />
@@ -18,7 +18,7 @@
           <p class="text-xs text-gray-400">рекомендовано 410 ккал</p>
         </div>
         <img
-          class="m-auto hover:cursor-pointer transition transform hover:scale-105"
+          class="m-auto hover:cursor-pointer transition transform hover:scale-105 isLarge:scale-120"
           src="/Button.png"
         />
         <img class="flex-justify-left m-auto" src="/Ellipse 2.png" />
