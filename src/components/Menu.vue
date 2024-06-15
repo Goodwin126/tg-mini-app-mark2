@@ -64,16 +64,24 @@ const props = defineProps({
     </div>
   </div>
   <div class="flex grid grid-cols-4 mt-2 touch-none select-none">
-    <div class="m-auto" :class="{ shrunk: isShrunk['diary'] }" @click="() => shrinkButton('diary')">
+    <div
+      class="m-auto flex flex-col"
+      :class="{ shrunk: isShrunk['diary'] }"
+      @click="() => shrinkButton('diary')"
+    >
       <img class="w-14 h-14" src="/diary.png" />
       <p class="text-sm font-italic text-black">Дневник</p>
     </div>
-    <div class="m-auto" :class="{ shrunk: isShrunk['study'] }" @click="() => shrinkButton('study')">
+    <div
+      class="m-auto flex flex-col"
+      :class="{ shrunk: isShrunk['study'] }"
+      @click="() => shrinkButton('study')"
+    >
       <img class="w-14 h-14" src="/study.png" />
       <p class="text-sm font-italic text-black">Изучить</p>
     </div>
     <div
-      class="m-auto"
+      class="m-auto flex flex-col"
       :class="{ shrunk: isShrunk['awards'] }"
       @click="() => shrinkButton('awards')"
     >
@@ -81,7 +89,7 @@ const props = defineProps({
       <p class="text-sm font-italic text-black">Награды</p>
     </div>
     <div
-      class="m-auto"
+      class="m-auto flex flex-col"
       :class="{ shrunk: isShrunk['results'] }"
       @click="() => shrinkButton('results')"
     >
