@@ -24,7 +24,7 @@ const shrinkButton = (buttonId) => {
         <img
           @click="shrinkButton(1)"
           :class="{ shrinked: isShrunk[1], normal: !isShrunk[1] }"
-          class="m-auto hover:cursor-pointer mr-6"
+          class="m-auto hover:cursor-pointer mr-2"
           src="/Button.png"
         />
         <img class="flex-justify-left m-auto" src="/Ellipse 4.png" />
@@ -35,7 +35,7 @@ const shrinkButton = (buttonId) => {
         <img
           @click="shrinkButton(2)"
           :class="{ shrinked: isShrunk[2], normal: !isShrunk[2] }"
-          class="m-auto hover:cursor-pointer mr-6"
+          class="m-auto hover:cursor-pointer mr-2"
           src="/Button.png"
         />
         <img class="flex-justify-left m-auto" src="/Ellipse 2.png" />
@@ -46,7 +46,7 @@ const shrinkButton = (buttonId) => {
         <img
           @click="shrinkButton(3)"
           :class="{ shrinked: isShrunk[3], normal: !isShrunk[3] }"
-          class="m-auto hover:cursor-pointer mr-6"
+          class="m-auto hover:cursor-pointer mr-2"
           src="/Button.png"
         />
         <img class="flex-justify-left m-auto" src="/Ellipse 5.png" />
@@ -57,7 +57,7 @@ const shrinkButton = (buttonId) => {
         <img
           @click="shrinkButton(4)"
           :class="{ shrinked: isShrunk[4], normal: !isShrunk[4] }"
-          class="m-auto hover:cursor-pointer mr-6"
+          class="m-auto hover:cursor-pointer mr-2"
           src="/Button.png"
         />
       </div>
