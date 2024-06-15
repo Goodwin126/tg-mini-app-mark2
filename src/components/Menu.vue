@@ -12,7 +12,7 @@ const shrinkButton = (buttonId) => {
 </script>
 
 <template>
-  <div class="place-content-center mt-10 touch-none select-none">
+  <div class="place-content-center mt-6 touch-none select-none">
     <div class="flex flex-col">
       <div class="flex grid grid-cols-3">
         <img class="flex-justify-left m-auto" src="/Ellipse 3.png" />
@@ -63,7 +63,7 @@ const shrinkButton = (buttonId) => {
       </div>
     </div>
   </div>
-  <div class="flex grid grid-cols-4 mt-2 touch-none select-none">
+  <div class="flex grid grid-cols-4 mt-1 touch-none select-none">
     <img
       class="m-auto w-14 h-14 focus:outline-none transition transform hover:scale-105 hover:-translate-y-1"
       src="/diary.png"
@@ -82,9 +82,9 @@ const shrinkButton = (buttonId) => {
       src="/results.png"
     />
     <p class="m-auto text-sm font-italic text-black hover:text-blue-800">Дневник</p>
-    <p class="m-auto text-sm font-bold text-black hover:text-blue-800">Изучить</p>
-    <p class="m-auto text-sm font-bold text-black hover:text-blue-800">Награды</p>
-    <p class="m-auto text-sm font-bold text-black hover:text-blue-800">Результаты</p>
+    <p class="m-auto text-sm font-italic text-black hover:text-blue-800">Изучить</p>
+    <p class="m-auto text-sm font-italic text-black hover:text-blue-800">Награды</p>
+    <p class="m-auto text-sm font-italic text-black hover:text-blue-800">Результаты</p>
   </div>
 </template>
 
