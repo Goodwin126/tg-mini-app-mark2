@@ -12,55 +12,53 @@ const shrinkButton = (buttonId) => {
 </script>
 
 <template>
-  <div class="place-content-center mt-10 touch-none select-none">
-    <div class="flex flex-col">
-      <div class="flex grid grid-cols-3">
-        <img class="flex-justify-left m-auto" src="/Ellipse 3.png" />
-        <div class="flex flex-col m-auto mt-2.5 ml-0">
-          <p class="text-lg text-white overflow-auto">Вода 1,5 л</p>
-          <img class="m-auto ml-0" src="/Runner_4.png" />
-          <p class="text-xs text-gray-400 overflow-auto">рекомендовано 2,3 л</p>
-        </div>
-        <img
-          @click="shrinkButton(1)"
-          :class="{ shrinked: isShrunk[1], normal: !isShrunk[1] }"
-          class="m-auto hover:cursor-pointer mr-2"
-          src="/Button.png"
-        />
-        <img class="flex-justify-left m-auto" src="/Ellipse 4.png" />
-        <div class="flex flex-col mt-2.5">
-          <p class="text-lg text-white">Завтрак</p>
-          <p class="text-xs text-gray-400">рекомендовано 410 ккал</p>
-        </div>
-        <img
-          @click="shrinkButton(2)"
-          :class="{ shrinked: isShrunk[2], normal: !isShrunk[2] }"
-          class="m-auto hover:cursor-pointer mr-2"
-          src="/Button.png"
-        />
-        <img class="flex-justify-left m-auto" src="/Ellipse 2.png" />
-        <div class="flex flex-col mt-2.5">
-          <p class="text-lg text-white">Обед</p>
-          <p class="text-xs text-gray-400">рекомендовано 540 ккал</p>
-        </div>
-        <img
-          @click="shrinkButton(3)"
-          :class="{ shrinked: isShrunk[3], normal: !isShrunk[3] }"
-          class="m-auto hover:cursor-pointer mr-2"
-          src="/Button.png"
-        />
-        <img class="flex-justify-left m-auto" src="/Ellipse 5.png" />
-        <div class="flex flex-col mt-2.5">
-          <p class="text-lg text-white">Ужин</p>
-          <p class="text-xs text-gray-400">рекомендовано 320 ккал</p>
-        </div>
-        <img
-          @click="shrinkButton(4)"
-          :class="{ shrinked: isShrunk[4], normal: !isShrunk[4] }"
-          class="m-auto hover:cursor-pointer mr-2"
-          src="/Button.png"
-        />
+  <div class="flex flex-col">
+    <div class="flex grid grid-cols-3">
+      <img class="flex-justify-left m-auto" src="/Ellipse 3.png" />
+      <div class="flex flex-col m-auto mt-2.5 ml-0">
+        <p class="text-lg text-white overflow-auto">Вода 1,5 л</p>
+        <img class="m-auto ml-0" src="/Runner_4.png" />
+        <p class="text-xs text-gray-400 overflow-auto">рекомендовано 2,3 л</p>
       </div>
+      <img
+        @click="shrinkButton(1)"
+        :class="{ shrinked: isShrunk[1], normal: !isShrunk[1] }"
+        class="m-auto hover:cursor-pointer mr-2"
+        src="/Button.png"
+      />
+      <img class="flex-justify-left m-auto" src="/Ellipse 4.png" />
+      <div class="flex flex-col mt-2.5">
+        <p class="text-lg text-white">Завтрак</p>
+        <p class="text-xs text-gray-400">рекомендовано 410 ккал</p>
+      </div>
+      <img
+        @click="shrinkButton(2)"
+        :class="{ shrinked: isShrunk[2], normal: !isShrunk[2] }"
+        class="m-auto hover:cursor-pointer mr-2"
+        src="/Button.png"
+      />
+      <img class="flex-justify-left m-auto" src="/Ellipse 2.png" />
+      <div class="flex flex-col mt-2.5">
+        <p class="text-lg text-white">Обед</p>
+        <p class="text-xs text-gray-400">рекомендовано 540 ккал</p>
+      </div>
+      <img
+        @click="shrinkButton(3)"
+        :class="{ shrinked: isShrunk[3], normal: !isShrunk[3] }"
+        class="m-auto hover:cursor-pointer mr-2"
+        src="/Button.png"
+      />
+      <img class="flex-justify-left m-auto" src="/Ellipse 5.png" />
+      <div class="flex flex-col mt-2.5">
+        <p class="text-lg text-white">Ужин</p>
+        <p class="text-xs text-gray-400">рекомендовано 320 ккал</p>
+      </div>
+      <img
+        @click="shrinkButton(4)"
+        :class="{ shrinked: isShrunk[4], normal: !isShrunk[4] }"
+        class="m-auto hover:cursor-pointer mr-2"
+        src="/Button.png"
+      />
     </div>
   </div>
   <div class="flex grid grid-cols-4 mt-2 touch-none select-none">
