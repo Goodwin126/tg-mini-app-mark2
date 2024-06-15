@@ -12,7 +12,7 @@ const shrinkButton = (buttonId) => {
 </script>
 
 <template>
-  <div class="place-content-center mt-6 touch-none select-none">
+  <div class="place-content-center mt-10 touch-none select-none">
     <div class="flex flex-col">
       <div class="flex grid grid-cols-3">
         <img class="flex-justify-left m-auto" src="/Ellipse 3.png" />
@@ -24,7 +24,7 @@ const shrinkButton = (buttonId) => {
         <img
           @click="shrinkButton(1)"
           :class="{ shrinked: isShrunk[1], normal: !isShrunk[1] }"
-          class="m-auto hover:cursor-pointer"
+          class="m-auto hover:cursor-pointer mr-6"
           src="/Button.png"
         />
         <img class="flex-justify-left m-auto" src="/Ellipse 4.png" />
@@ -35,7 +35,7 @@ const shrinkButton = (buttonId) => {
         <img
           @click="shrinkButton(2)"
           :class="{ shrinked: isShrunk[2], normal: !isShrunk[2] }"
-          class="m-auto hover:cursor-pointer"
+          class="m-auto hover:cursor-pointer mr-6"
           src="/Button.png"
         />
         <img class="flex-justify-left m-auto" src="/Ellipse 2.png" />
@@ -46,7 +46,7 @@ const shrinkButton = (buttonId) => {
         <img
           @click="shrinkButton(3)"
           :class="{ shrinked: isShrunk[3], normal: !isShrunk[3] }"
-          class="m-auto hover:cursor-pointer"
+          class="m-auto hover:cursor-pointer mr-6"
           src="/Button.png"
         />
         <img class="flex-justify-left m-auto" src="/Ellipse 5.png" />
@@ -57,13 +57,13 @@ const shrinkButton = (buttonId) => {
         <img
           @click="shrinkButton(4)"
           :class="{ shrinked: isShrunk[4], normal: !isShrunk[4] }"
-          class="m-auto hover:cursor-pointer"
+          class="m-auto hover:cursor-pointer mr-6"
           src="/Button.png"
         />
       </div>
     </div>
   </div>
-  <div class="flex grid grid-cols-4 mt-1 touch-none select-none">
+  <div class="flex grid grid-cols-4 mt-2 touch-none select-none">
     <img
       class="m-auto w-14 h-14 focus:outline-none transition transform hover:scale-105 hover:-translate-y-1"
       src="/diary.png"
@@ -99,5 +99,8 @@ button {
 
 .normal {
   transform: scale(1); /* Возвращаем к обычному размеру */
+}
+.grid-cols-3 {
+  grid-template-columns: auto auto auto; /* Размеры колонок будут соответствовать контенту внутри */
 }
 </style>
