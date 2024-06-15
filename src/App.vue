@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 import Header from './components/Header.vue'
-//import Menu from './components/Menu.vue'
+import Menu from './components/Menu.vue'
 import Water from './components/Vater.vue'
 
 const isShrunk = ref({})
@@ -20,7 +20,7 @@ const shrinkButton = (buttonId) => {
     <Header />
     <div class="place-content-center mt-10 touch-none select-none">
       <Water :shrinkButton="shrinkButton" :isShrunk="isShrunk" />
-      <!-- <Menu /> -->
+      <Menu :shrinkButton="shrinkButton" :isShrunk="isShrunk" />
     </div>
   </div>
 </template>

@@ -1,14 +1,16 @@
 <script setup>
-import { ref } from 'vue'
+import { defineProps, toRefs } from 'vue'
 
-const isShrunk = ref({ 1: false, 2: false }) // Для каждой кнопки отслеживаем состояние уменьшения
-
-const shrinkButton = (buttonId) => {
-  isShrunk.value[buttonId] = true
-  setTimeout(() => {
-    isShrunk.value[buttonId] = false
-  }, 100) // Задержка для анимации (в миллисекундах)
-}
+const props = defineProps({
+  shrinkButton: {
+    type: Function,
+    required: true
+  },
+  isShrunk: {
+    type: Object,
+    required: true
+  }
+})
 </script>
 
 <template>
@@ -62,54 +64,36 @@ const shrinkButton = (buttonId) => {
     </div>
   </div>
   <div class="flex grid grid-cols-4 mt-2 touch-none select-none">
-    <img
-      @click="shrinkButton(5)"
-      :class="{ shrinked: isShrunk[5], normal: !isShrunk[5] }"
-      class="m-auto w-14 h-14"
-      src="/diary.png"
-    />
-    <img
-      @click="shrinkButton(6)"
-      :class="{ shrinked: isShrunk[6], normal: !isShrunk[6] }"
-      class="m-auto w-14 h-14"
-      src="/study.png"
-    />
-    <img
-      @click="shrinkButton(7)"
-      :class="{ shrinked: isShrunk[7], normal: !isShrunk[7] }"
-      status
-      class="m-auto w-14 h-14"
-      src="/awards.png"
-    />
-    <div class="relative">
-      <img
-        @click="shrinkButton(8)"
-        :class="{ shrinked: isShrunk[8], normal: !isShrunk[8] }"
-        status
-        class="m-auto w-14 h-14"
-        src="/results.png"
-      />
+    <div class="m-auto" :class="{ shrunk: isShrunk['diary'] }" @click="() => shrinkButton('diary')">
+      <img class="w-14 h-14" src="/diary.png" />
+      <p class="text-sm font-italic text-black">Дневник</p>
     </div>
-    <p class="m-auto text-sm font-italic text-black hover:text-blue-800">Дневник</p>
-    <p class="m-auto text-sm font-italic text-black hover:text-blue-800">Изучить</p>
-    <p class="m-auto text-sm font-italic text-black hover:text-blue-800">Награды</p>
-    <p class="m-auto text-sm font-italic text-black hover:text-blue-800">Результаты</p>
+    <div class="m-auto" :class="{ shrunk: isShrunk['study'] }" @click="() => shrinkButton('study')">
+      <img class="w-14 h-14" src="/study.png" />
+      <p class="text-sm font-italic text-black">Изучить</p>
+    </div>
+    <div
+      class="m-auto"
+      :class="{ shrunk: isShrunk['awards'] }"
+      @click="() => shrinkButton('awards')"
+    >
+      <img class="w-14 h-14" src="/awards.png" />
+      <p class="text-sm font-italic text-black">Награды</p>
+    </div>
+    <div
+      class="m-auto"
+      :class="{ shrunk: isShrunk['results'] }"
+      @click="() => shrinkButton('results')"
+    >
+      <img class="w-14 h-14" src="/results.png" />
+      <p class="text-sm font-italic text-black">Результаты</p>
+    </div>
   </div>
 </template>
 
-<style scoped>
-button {
-  transition: transform 0.3s ease-in-out; /* Применяем плавные переходы */
-}
-
-.shrinked {
-  transform: scale(0.8); /* Уменьшаем размер кнопки */
-}
-
-.normal {
-  transform: scale(1); /* Возвращаем к обычному размеру */
-}
-.grid-cols-3 {
-  grid-template-columns: auto auto auto; /* Размеры колонок будут соответствовать контенту внутри */
+<style>
+.shrunk {
+  transform: scale(0.9);
+  transition: transform 0.1s ease;
 }
 </style>
