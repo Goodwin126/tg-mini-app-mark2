@@ -1,3 +1,21 @@
+<script setup>
+import { ref, computed } from 'vue'
+
+const isShrunk = ref(false)
+
+const shrinkButton = () => {
+  isShrunk.value = true
+  setTimeout(() => {
+    isShrunk.value = false
+  }, 300) // Время в миллисекундах, через которое кнопка вернется к обычному размеру
+}
+
+// Вычисляемое свойство для определения класса кнопки в зависимости от состояния
+const buttonClass = computed(() => {
+  return isShrunk.value ? 'w-8 h-8' : 'w-16 h-16'
+})
+</script>
+
 <template>
   <div class="place-content-center mt-10 touch-none select-none">
     <div class="flex flex-col">
@@ -9,6 +27,8 @@
           <p class="text-xs text-gray-400 overflow-auto">рекомендовано 2,3 л</p>
         </div>
         <img
+          @click="shrinkButton"
+          :class="buttonClass"
           class="m-auto hover:cursor-pointer transition transform hover:scale-105 isLarge:scale-90"
           src="/Button.png"
         />
