@@ -65,22 +65,33 @@ const shrinkButton = (buttonId) => {
   </div>
   <div class="flex grid grid-cols-4 mt-2 touch-none select-none">
     <img
-      class="m-auto w-14 h-14 focus:outline-none transition transform hover:scale-105 hover:-translate-y-1"
+      @click="shrinkButton(5)"
+      :class="{ shrinked: isShrunk[5], normal: !isShrunk[5] }"
+      class="m-auto w-14 h-14"
       src="/diary.png"
     />
     <img
-      class="m-auto w-14 h-14 focus:outline-none transition transform hover:scale-105 hover:-translate-y-1"
+      @click="shrinkButton(6)"
+      :class="{ shrinked: isShrunk[6], normal: !isShrunk[6] }"
+      class="m-auto w-14 h-14"
       src="/study.png"
     />
     <img
+      @click="shrinkButton(7)"
+      :class="{ shrinked: isShrunk[7], normal: !isShrunk[7] }"
       status
-      class="m-auto w-14 h-14 focus:outline-none transition transform hover:scale-105 hover:-translate-y-1"
+      class="m-auto w-14 h-14"
       src="/awards.png"
     />
-    <img
-      class="m-auto w-14 h-14 focus:outline-none transition transform hover:scale-105 hover:-translate-y-1"
-      src="/results.png"
-    />
+    <div class="relative">
+      <img
+        @click="shrinkButton(8)"
+        :class="{ shrinked: isShrunk[8], normal: !isShrunk[8] }"
+        status
+        class="m-auto w-14 h-14"
+        src="/results.png"
+      />
+    </div>
     <p class="m-auto text-sm font-italic text-black hover:text-blue-800">Дневник</p>
     <p class="m-auto text-sm font-italic text-black hover:text-blue-800">Изучить</p>
     <p class="m-auto text-sm font-italic text-black hover:text-blue-800">Награды</p>
