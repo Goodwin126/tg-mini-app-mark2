@@ -4,7 +4,7 @@ import Menu from './components/Menu.vue'
 </script>
 
 <template>
-  <div class="flex flex-col">
+  <div class="flex-col w-96">
     <Header />
     <Menu />
   </div>
