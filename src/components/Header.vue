@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-  <div class="flex relative">
+  <div class="flex relative touch-none select-none">
     <dive class="flex-col gap-2 hover:cursor-pointer ml-6 mt-6 absolute">
       <img class="transition transform hover:scale-110 translate-y-1" src="/Rectangle 1.png" />
       <img class="mt-2 transition transform hover:scale-110 translate-y-1" src="/Rectangle 2.png" />
