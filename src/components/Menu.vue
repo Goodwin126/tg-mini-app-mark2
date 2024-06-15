@@ -1,19 +1,14 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
-const isShrunk = ref(false)
+const isShrunk = ref({ 1: false, 2: false }) // Для каждой кнопки отслеживаем состояние уменьшения
 
-const shrinkButton = () => {
-  isShrunk.value = true
+const shrinkButton = (buttonId) => {
+  isShrunk.value[buttonId] = true
   setTimeout(() => {
-    isShrunk.value = false
-  }, 300) // Время в миллисекундах, через которое кнопка вернется к обычному размеру
+    isShrunk.value[buttonId] = false
+  }, 100) // Задержка для анимации (в миллисекундах)
 }
-
-// Вычисляемое свойство для определения класса кнопки в зависимости от состояния
-const buttonClass = computed(() => {
-  return isShrunk.value ? 'w-8 h-8' : 'w-16 h-16'
-})
 </script>
 
 <template>
@@ -27,9 +22,9 @@ const buttonClass = computed(() => {
           <p class="text-xs text-gray-400 overflow-auto">рекомендовано 2,3 л</p>
         </div>
         <img
-          @click="shrinkButton"
-          :class="buttonClass"
-          class="m-auto hover:cursor-pointer transition transform hover:scale-105 isLarge:scale-90"
+          @click="shrinkButton(1)"
+          :class="{ shrinked: isShrunk[1], normal: !isShrunk[1] }"
+          class="m-auto hover:cursor-pointer"
           src="/Button.png"
         />
         <img class="flex-justify-left m-auto" src="/Ellipse 4.png" />
@@ -38,7 +33,9 @@ const buttonClass = computed(() => {
           <p class="text-xs text-gray-400">рекомендовано 410 ккал</p>
         </div>
         <img
-          class="m-auto hover:cursor-pointer transition transform hover:scale-105 isLarge:scale-90"
+          @click="shrinkButton(2)"
+          :class="{ shrinked: isShrunk[2], normal: !isShrunk[2] }"
+          class="m-auto hover:cursor-pointer"
           src="/Button.png"
         />
         <img class="flex-justify-left m-auto" src="/Ellipse 2.png" />
@@ -47,7 +44,9 @@ const buttonClass = computed(() => {
           <p class="text-xs text-gray-400">рекомендовано 540 ккал</p>
         </div>
         <img
-          class="m-auto hover:cursor-pointer transition transform hover:scale-105"
+          @click="shrinkButton(3)"
+          :class="{ shrinked: isShrunk[3], normal: !isShrunk[3] }"
+          class="m-auto hover:cursor-pointer"
           src="/Button.png"
         />
         <img class="flex-justify-left m-auto" src="/Ellipse 5.png" />
@@ -56,7 +55,9 @@ const buttonClass = computed(() => {
           <p class="text-xs text-gray-400">рекомендовано 320 ккал</p>
         </div>
         <img
-          class="m-auto hover:cursor-pointer transition transform hover:scale-105"
+          @click="shrinkButton(4)"
+          :class="{ shrinked: isShrunk[4], normal: !isShrunk[4] }"
+          class="m-auto hover:cursor-pointer"
           src="/Button.png"
         />
       </div>
@@ -86,3 +87,17 @@ const buttonClass = computed(() => {
     <p class="m-auto text-base font-bold text-black hover:text-blue-800">Результаты</p>
   </div>
 </template>
+
+<style scoped>
+button {
+  transition: transform 0.3s ease-in-out; /* Применяем плавные переходы */
+}
+
+.shrinked {
+  transform: scale(0.8); /* Уменьшаем размер кнопки */
+}
+
+.normal {
+  transform: scale(1); /* Возвращаем к обычному размеру */
+}
+</style>
