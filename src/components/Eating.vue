@@ -1,3 +1,6 @@
+<script setup>
+import FoodsSearch from './FoodsSearch.vue'
+</script>
 <template>
   <div class="flex flex-col rounded-xl h-full bg-black p-1 gap-1">
     <div class="grid grid-cols-3 rounded-xl p-2 w-full bg-navy">
@@ -20,6 +23,7 @@
         <p class="text-xs text-white p-1 m-auto">Блюда</p>
       </div>
     </div>
+    <FoodsSearch />
   </div>
 </template>
 
