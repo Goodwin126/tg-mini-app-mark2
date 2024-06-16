@@ -1,18 +1,14 @@
 <script setup>
-import { defineProps, toRefs } from 'vue'
+import { ref } from 'vue'
 
-const props = defineProps({
-  shrinkButton: {
-    type: Function,
-    required: true
-  },
-  isShrunk: {
-    type: Object,
-    required: true
-  }
-})
+const isShrunk = ref({})
 
-const { isShrunk } = toRefs(props)
+const shrinkButton = (buttonId) => {
+  isShrunk.value[buttonId] = true
+  setTimeout(() => {
+    isShrunk.value[buttonId] = false
+  }, 100) // Задержка для анимации (в миллисекундах)
+}
 </script>
 
 <template>
@@ -36,6 +32,7 @@ const { isShrunk } = toRefs(props)
         <img src="/100_ml.jpg" alt="100_мл" class="w-3/6 m-auto mt-5" />
         <p class="text-center font-bold text-blue-900">100 мл</p>
       </div>
+
       <div :class="{ shrunk: isShrunk['200_ml'] }" @click="() => shrinkButton('200_ml')">
         <img src="/200_ml.jpg" alt="200_мл" class="w-3/6 m-auto mt-5" />
         <p class="text-center font-bold text-blue-900">200 мл</p>
