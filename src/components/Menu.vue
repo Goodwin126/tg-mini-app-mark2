@@ -29,18 +29,22 @@ const shrinkButton = (buttonId) => {
           class="m-auto hover:cursor-pointer mr-2"
         />
       </router-link>
+
       <img class="flex-justify-left m-auto" src="/Ellipse 4.png" />
       <div class="flex flex-col mt-2.5">
         <p class="text-lg text-white">Завтрак</p>
         <p class="text-xs text-gray-400">рекомендовано 410 ккал</p>
       </div>
-      <img
-        src="/Button.png"
-        alt="Button_2"
-        :class="{ shrunk: isShrunk['Button_2'] }"
-        @click="shrinkButton('Button_2')"
-        class="m-auto hover:cursor-pointer mr-2"
-      />
+
+      <router-link to="/eating">
+        <img
+          src="/Button.png"
+          alt="Button_2"
+          :class="{ shrunk: isShrunk['Button_2'] }"
+          @click="shrinkButton('Button_2')"
+          class="m-auto hover:cursor-pointer mr-2"
+        />
+      </router-link>
       <img class="flex-justify-left m-auto" src="/Ellipse 2.png" />
       <div class="flex flex-col mt-2.5">
         <p class="text-lg text-white">Обед</p>
