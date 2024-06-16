@@ -16,11 +16,13 @@
       type="text"
       placeholder="Введите количество в миллилитрах"
     />
-    <button class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5">
+    <button class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5 w-full">
       Готово
     </button>
-    <button class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5">
-      Назад
-    </button>
+    <router-link to="/water">
+      <button class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5 w-full">
+        Назад
+      </button>
+    </router-link>
   </div>
 </template>
