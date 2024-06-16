@@ -12,7 +12,7 @@
         <h1 class="text-xl font-bold text-gray-500 text-center">Сегодня: суббота</h1>
         <div class="flex place-content-center mt-5">
           <img class="absolute" src="/Ellipse 1.png" />
-          <div class="mt-6 grid grid-cols-1 gap-1">
+          <div class="mt-4 grid grid-cols-1">
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-2,5 h-2,5 m-auto mr-1" src="/Ellipse 6.png" />
               <p class="ml-1 text-white font-bold">30% Жиры</p>
@@ -24,6 +24,10 @@
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-2,5 h-2,5 m-auto mr-1" src="/Ellipse 8.png" />
               <p class="flexml-1 text-green-600 font-bold">30% Углеводы</p>
+            </div>
+            <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
+              <img class="w-5.5 h-5 m-auto mr-1" src="/water.png" />
+              <p class="flexml-1 text-blue-600 font-bold">30% Воды</p>
             </div>
           </div>
         </div>
