@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
   <div class="relative touch-none select-none">
-    <dive class="flex-col gap-2 hover:cursor-pointer absolute ml-8 mt-4">
+    <dive class="flex-col gap-2 hover:cursor-pointer absolute ml-8 mt-3">
       <img class="transition transform hover:scale-110 translate-y-1" src="/Rectangle 1.png" />
       <img class="mt-2 transition transform hover:scale-110 translate-y-1" src="/Rectangle 2.png" />
       <img class="mt-2 transition transform hover:scale-110 translate-y-1" src="/Rectangle 3.png" />
@@ -10,9 +10,9 @@
     <RouterLink to="/"
       ><div class="w-full">
         <h1 class="text-xl font-bold text-gray-500 text-center mt-6">Сегодня: суббота</h1>
-        <div class="flex place-content-center mt-5">
+        <div class="flex place-content-center mt-2">
           <img class="absolute" src="/Ellipse 1.png" />
-          <div class="mt-2 grid grid-cols-1">
+          <div class="mt-4 grid grid-cols-1">
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-2,5 h-2,5 m-auto mr-1" src="/Ellipse 6.png" />
               <p class="ml-1 text-white font-bold">30% Жиры</p>
