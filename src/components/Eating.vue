@@ -23,7 +23,16 @@ import FoodsSearch from './FoodsSearch.vue'
         <p class="text-xs text-white p-1 m-auto">Блюда</p>
       </div>
     </div>
-    <FoodsSearch />
+    <div class="flex rounded-xl p-2 w-full bg-navy">
+      <FoodsSearch />
+    </div>
+    <div class="flex rounded-xl p-2 w-full bg-navy">
+      <RouterLink to="/" class="w-full">
+        <button class="text-white bg-gray rounded-lg text-sm font-bold text-center p-2.5 w-full">
+          Назад
+        </button>
+      </RouterLink>
+    </div>
   </div>
 </template>
 
