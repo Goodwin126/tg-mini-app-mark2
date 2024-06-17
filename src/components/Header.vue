@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
   <div class="relative touch-none select-none">
-    <dive class="flex-col gap-2 hover:cursor-pointer absolute ml-3 mt-3">
+    <dive class="flex-col gap-2 hover:cursor-pointer absolute ml-6 mt-6">
       <img class="transition transform hover:scale-110 translate-y-1" src="/Rectangle 1.png" />
       <img class="mt-2 transition transform hover:scale-110 translate-y-1" src="/Rectangle 2.png" />
       <img class="mt-2 transition transform hover:scale-110 translate-y-1" src="/Rectangle 3.png" />
