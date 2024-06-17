@@ -3,11 +3,12 @@ import { ref } from 'vue'
 import { useWaterStore } from '../store/store'
 
 const waterStore = useWaterStore()
-const customAmount = ref(0)
+const customAmount = ref(null) // Используем null вместо 0 для проверки
 
 const handleCustomAmount = () => {
-  waterStore.increment(Number(customAmount.value))
-  console.log(waterStore.count)
+  if (customAmount.value !== null) {
+    waterStore.increment(Number(customAmount.value))
+  }
 }
 </script>
 
@@ -26,16 +27,18 @@ const handleCustomAmount = () => {
   <div class="flex place-content-center flex-col w-4/6 m-auto">
     <input
       v-model="customAmount"
-      class="mt-5 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 placeholder-gray-500"
+      :placeholder="customAmount === null ? 'Введите количество в миллилитрах' : ''"
+      class="mt-5 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 placeholder-gray-500 no-spinner"
       type="number"
-      placeholder="Введите количество в миллилитрах"
     />
-    <button
-      @click="handleCustomAmount"
-      class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5 w-full"
-    >
-      Готово
-    </button>
+    <router-link to="/water">
+      <button
+        @click="handleCustomAmount"
+        class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5 w-full"
+      >
+        Готово
+      </button>
+    </router-link>
     <router-link to="/water">
       <button class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5 w-full">
         Назад
@@ -43,3 +46,15 @@ const handleCustomAmount = () => {
     </router-link>
   </div>
 </template>
+
+<style scoped>
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spinner {
+  -moz-appearance: textfield; /* Удаление стрелочек в Firefox */
+}
+</style>

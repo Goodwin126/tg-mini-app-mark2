@@ -1,15 +1,31 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+// Получаем текущую дату
+const date = new Date()
+const daysOfWeek = [
+  'Воскресенье',
+  'Понедельник',
+  'Вторник',
+  'Среда',
+  'Четверг',
+  'Пятница',
+  'Суббота'
+]
+const today = ref(daysOfWeek[date.getDay()])
+</script>
+
 <template>
   <div class="relative touch-none select-none">
-    <dive class="flex-col gap-2 hover:cursor-pointer absolute ml-6 mt-2">
+    <div class="flex-col gap-2 hover:cursor-pointer absolute ml-6 mt-0.5">
       <img class="transition transform hover:scale-110 translate-y-1" src="/Rectangle 1.png" />
       <img class="mt-2 transition transform hover:scale-110 translate-y-1" src="/Rectangle 2.png" />
       <img class="mt-2 transition transform hover:scale-110 translate-y-1" src="/Rectangle 3.png" />
-    </dive>
+    </div>
 
-    <RouterLink to="/"
-      ><div class="w-full">
-        <h1 class="text-xl font-bold text-gray-500 text-center mt-6">Сегодня: суббота</h1>
+    <RouterLink to="/">
+      <div class="w-full">
+        <h1 class="text-xl font-bold text-gray-500 text-center mt-6">Сегодня: {{ today }}</h1>
         <div class="flex place-content-center mt-3">
           <img class="absolute" src="/Ellipse 1.png" />
           <div class="mt-4 grid grid-cols-1">
