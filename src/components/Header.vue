@@ -31,7 +31,7 @@
             </div>
           </div>
         </div>
-      </div></RouterLink
-    >
+      </div>
+    </RouterLink>
   </div>
 </template>

@@ -49,6 +49,11 @@ const handleButtonClick = (amount, buttonId) => {
         <p class="text-center font-bold text-blue-900">200 мл</p>
       </div>
     </div>
+    <RouterLink to="/">
+      <button class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5 w-full">
+        Назад
+      </button>
+    </RouterLink>
   </div>
 </template>
 
