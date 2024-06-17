@@ -1,13 +1,14 @@
 <script setup>
 import { ref } from 'vue'
+import { useWaterStore } from '../store/store' // Импорт из правильного пути
 
-let count = ref(0)
+const waterStore = useWaterStore()
 
 const isShrunk = ref({})
 
 const handleButtonClick = (amount, buttonId) => {
-  count.value += amount
-  console.log(count.value)
+  waterStore.increment(amount)
+  console.log(waterStore.count)
 
   isShrunk.value[buttonId] = true
   setTimeout(() => {
@@ -19,7 +20,7 @@ const handleButtonClick = (amount, buttonId) => {
 <template>
   <div class="flex flex-col mt-5">
     <div class="flex place-content-center gap-1">
-      <p class="text-2xl text-white">Вода: {{ count }}/</p>
+      <p class="text-2xl text-white">Вода: {{ waterStore.count }}/</p>
       <p class="text-2xl font-bold text-blue-900">2.5 л Норма</p>
     </div>
     <div class="grid grid-cols-4 place-content-center bg-white mt-5 rounded-xl">

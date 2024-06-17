@@ -1,5 +1,8 @@
 <script setup>
+import { useWaterStore } from './store/store'
 import Header from './components/Header.vue'
+
+const waterStore = useWaterStore()
 </script>
 
 <template>
