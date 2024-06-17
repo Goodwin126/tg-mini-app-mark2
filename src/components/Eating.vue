@@ -38,7 +38,7 @@ import FoodsSearch from './FoodsSearch.vue'
 
 <style scoped>
 .bg-navy {
-  background-color: rgb(18, 18, 70);
+  background-color: rgb(11, 11, 41);
 }
 .bg-gray {
   background-color: rgb(38, 38, 85);
