@@ -6,7 +6,7 @@ const waterStore = useWaterStore()
 </script>
 
 <template>
-  <div class="flex-col m-2">
+  <div class="flex-col">
     <Header />
     <div class="place-content-center mt-10 touch-none select-none">
       <router-view></router-view>
