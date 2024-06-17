@@ -41,9 +41,9 @@ import FoodsSearch from './FoodsSearch.vue'
   background-color: rgb(5, 5, 27);
 }
 .bg-gray {
-  background-color: rgb(25, 25, 75);
+  background-color: rgb(38, 38, 85);
 }
 .bg-ready {
-  background-color: rgb(15, 15, 48);
+  background-color: rgb(23, 23, 90);
 }
 </style>
