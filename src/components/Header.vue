@@ -27,7 +27,7 @@
             </div>
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-5.5 h-5 m-auto mr-1" src="/water.png" />
-              <p class="flexml-1 text-blue-200 font-bold">30% Воды</p>
+              <p class="flexml-1 text-blue-300 font-bold">30% Воды</p>
             </div>
           </div>
         </div>
