@@ -19,7 +19,7 @@
             </div>
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-2,5 h-2,5 m-auto mr-1" src="/Ellipse 7.png" />
-              <p class="flex ml-1 text-blue-900 font-bold">30% Белки</p>
+              <p class="flex ml-1 text-blue-600 font-bold">30% Белки</p>
             </div>
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-2,5 h-2,5 m-auto mr-1" src="/Ellipse 8.png" />
@@ -27,7 +27,7 @@
             </div>
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-5.5 h-5 m-auto mr-1" src="/water.png" />
-              <p class="flexml-1 text-blue-600 font-bold">30% Воды</p>
+              <p class="flexml-1 text-blue-200 font-bold">30% Воды</p>
             </div>
           </div>
         </div>
