@@ -10,7 +10,7 @@
     <RouterLink to="/"
       ><div class="w-full">
         <h1 class="text-xl font-bold text-gray-500 text-center mt-6">Сегодня: суббота</h1>
-        <div class="flex place-content-center mt-1">
+        <div class="flex place-content-center mt-3">
           <img class="absolute" src="/Ellipse 1.png" />
           <div class="mt-4 grid grid-cols-1">
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
