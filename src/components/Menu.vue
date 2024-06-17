@@ -20,7 +20,7 @@ const shrinkButton = (buttonId) => {
         <img class="m-auto ml-0" src="/Runner_4.png" />
         <p class="text-xs text-gray-400 overflow-auto">рекомендовано 2,3 л</p>
       </div>
-      <router-link to="/water" class="m-auto mr-2">
+      <router-link to="/water" class="m-auto mr-8">
         <img
           src="/Button.png"
           alt="Button_1"
@@ -36,7 +36,7 @@ const shrinkButton = (buttonId) => {
         <p class="text-xs text-gray-400">рекомендовано 410 ккал</p>
       </div>
 
-      <router-link to="/eating" class="m-auto mr-2">
+      <router-link to="/eating" class="m-auto mr-8">
         <img
           src="/Button.png"
           alt="Button_2"
@@ -55,7 +55,7 @@ const shrinkButton = (buttonId) => {
         alt="Button_3"
         :class="{ shrunk: isShrunk['Button_3'] }"
         @click="shrinkButton('Button_3')"
-        class="m-auto hover:cursor-pointer mr-2"
+        class="m-auto hover:cursor-pointer mr-8"
       />
       <img class="flex-justify-left m-auto" src="/Ellipse 5.png" />
       <div class="flex flex-col mt-2.5">
@@ -67,7 +67,7 @@ const shrinkButton = (buttonId) => {
         alt="Button_4"
         :class="{ shrunk: isShrunk['Button_4'] }"
         @click="shrinkButton('Button_4')"
-        class="m-auto hover:cursor-pointer mr-2"
+        class="m-auto hover:cursor-pointer mr-8"
       />
     </div>
   </div>
