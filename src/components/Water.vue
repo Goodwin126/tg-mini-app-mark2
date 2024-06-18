@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { useWaterStore } from '../store/store' // Импорт из правильного пути
+import { useWaterStore } from '../store/store'
 
 const waterStore = useWaterStore()
 
@@ -49,11 +49,11 @@ const handleButtonClick = (amount, buttonId) => {
         <p class="text-center font-bold text-blue-900">200 мл</p>
       </div>
     </div>
-    <RouterLink to="/">
+    <router-link to="/">
       <button class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5 w-full">
         Назад
       </button>
-    </RouterLink>
+    </router-link>
   </div>
 </template>
 
@@ -61,5 +61,14 @@ const handleButtonClick = (amount, buttonId) => {
 .shrunk {
   transform: scale(0.9);
   transition: transform 0.1s ease;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

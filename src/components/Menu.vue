@@ -112,4 +112,13 @@ const shrinkButton = (buttonId) => {
   transform: scale(0.9);
   transition: transform 0.1s ease;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
