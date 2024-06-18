@@ -10,6 +10,7 @@ const waterStore = useWaterStore()
     <Header />
     <div class="place-content-center mt-10 touch-none select-none m-4">
       <router-view></router-view>
+      <div class="w-full h-10">version 1.0</div>
     </div>
   </div>
 </template>
