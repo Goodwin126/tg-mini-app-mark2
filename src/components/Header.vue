@@ -1,5 +1,14 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+
+import { useWaterStore } from '../store/store'
+
+const waterStore = useWaterStore()
+// Вычисляем процент выпитой воды от нормы на человека
+const waterPercentage = computed(() => {
+  const percentage = (waterStore.count / waterStore.normPerPerson) * 100
+  return Math.round(percentage)
+})
 
 // Получаем текущую дату
 const date = new Date()
@@ -43,7 +52,7 @@ const today = ref(daysOfWeek[date.getDay()])
             </div>
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-5.5 h-5 m-auto mr-1" src="/water.png" />
-              <p class="flexml-1 text-blue-300 font-bold">30% Воды</p>
+              <p class="flex ml-1 text-blue-300 font-bold">{{ waterPercentage }}% Воды</p>
             </div>
           </div>
         </div>

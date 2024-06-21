@@ -9,7 +9,7 @@ const waterStore = useWaterStore()
   <div class="flex-col">
     <Header />
     <div class="place-content-center mt-10 touch-none select-none m-4">
-      <transition mode="out-in">
+      <transition name="fade" mode="out-in">
         <router-view></router-view>
       </transition>
       <div class="flex w-full h-10 place-content-center text-gray-500">version 1.0</div>
@@ -17,21 +17,13 @@ const waterStore = useWaterStore()
   </div>
 </template>
 
-<!-- Удалить или закомментировать следующую секцию стилей -->
-<!--
 <style>
-.slide-up-enter-active,
-.slide-up-leave-active {
-  transition: transform 0.6s ease, opacity 0.6s ease;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
-.slide-up-enter,
-.slide-up-leave-to {
-  transform: translateY(100%);
-  opacity: 0;
-}
-.slide-up-leave-active {
-  transform: translateY(-100%);
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
--->
