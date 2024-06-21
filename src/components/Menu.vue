@@ -25,15 +25,12 @@ const waterPercentage = computed(() => {
 
 <template>
   <div class="flex flex-col">
-    <div class="flex grid grid-cols-3">
+    <div class="flex grid" style="grid-template-columns: 1fr 2fr 1fr">
       <img class="flex-justify-left m-auto ml-0" src="/Ellipse 3.png" />
-      <div class="m-auto ml-0">
+      <div class="ml-0 mt-1.5">
         <p class="text-lg text-blue-300 overflow-auto">Вода {{ waterConsumedLiters }} л.</p>
         <!-- Прогресс-бар -->
-        <div class="m-0 p-0">
-          <ProgressBar maxWeight="100px" waterPercentage :persent="waterPercentage" />
-        </div>
-
+        <ProgressBar maxWeight="100px" waterPercentage :persent="waterPercentage" />
         <p class="text-xs text-gray-400 overflow-auto mt-0">
           рекомендовано {{ (waterStore.normPerPerson / 1000).toFixed(2) }} л.
         </p>
