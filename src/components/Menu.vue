@@ -30,7 +30,7 @@ const waterPercentage = computed(() => {
       <div class="ml-0 mt-1.5">
         <p class="text-lg text-blue-300 overflow-auto">Вода {{ waterConsumedLiters }} л.</p>
         <!-- Прогресс-бар -->
-        <ProgressBar maxWeight="100px" waterPercentage :persent="waterPercentage" />
+        <ProgressBar maxWeight="300px" waterPercentage :persent="waterPercentage" />
         <p class="text-xs text-gray-400 overflow-auto mt-0">
           рекомендовано {{ (waterStore.normPerPerson / 1000).toFixed(2) }} л.
         </p>

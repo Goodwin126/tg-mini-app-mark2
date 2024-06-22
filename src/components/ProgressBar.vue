@@ -2,7 +2,7 @@
 const props = defineProps({
   maxWeight: {
     type: String,
-    default: '300px'
+    default: '600px'
   },
   persent: {
     type: Number,
