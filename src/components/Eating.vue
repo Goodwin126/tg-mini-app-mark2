@@ -1,5 +1,56 @@
 <script setup>
 import FoodsSearch from './FoodsSearch.vue'
+
+const items = [
+  {
+    id: 1,
+    nameProdeduct: 'Яблоко',
+    kcal: 183,
+    protein: 23,
+    fat: 234,
+    carbs: 234
+  },
+  {
+    id: 2,
+    nameProdeduct: 'Банан',
+    kcal: 234,
+    protein: 23,
+    fat: 203,
+    carbs: 23
+  },
+  {
+    id: 3,
+    nameProdeduct: 'Молоко',
+    kcal: 23,
+    protein: 12,
+    fat: 54,
+    carbs: 5
+  },
+  {
+    id: 4,
+    nameProdeduct: 'Хлеб',
+    kcal: 123,
+    protein: 123,
+    fat: 2,
+    carbs: 34
+  },
+  {
+    id: 5,
+    nameProdeduct: 'Колбаса',
+    kcal: 23,
+    protein: 12,
+    fat: 34,
+    carbs: 4
+  },
+  {
+    id: 6,
+    nameProdeduct: 'Лекёр',
+    kcal: 23,
+    protein: 12,
+    fat: 34,
+    carbs: 23
+  }
+]
 </script>
 <template>
   <div class="flex flex-col rounded-xl h-full bg-black p-1 gap-1">
@@ -24,7 +75,7 @@ import FoodsSearch from './FoodsSearch.vue'
       </div>
     </div>
     <div class="flex rounded-xl p-1 w-full bg-navy">
-      <FoodsSearch />
+      <FoodsSearch :items="items" />
     </div>
     <div class="flex rounded-xl p-1 w-full bg-navy">
       <RouterLink to="/" class="w-full">
