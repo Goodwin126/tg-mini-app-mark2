@@ -16,7 +16,7 @@ const handleSearch = () => {
 
   searchResults.value = props.items
     .filter((product) =>
-      product.nameProdeduct.toLowerCase().includes(searchQuery.value.trim().toLowerCase())
+      product.name.toLowerCase().includes(searchQuery.value.trim().toLowerCase())
     )
     .slice(0, 4) // Ограничиваем вывод до 4 элементов
 }
@@ -40,14 +40,22 @@ watch(searchQuery, handleSearch)
         <li
           v-for="product in searchResults"
           :key="product.id"
-          class="px-4 py-3 cursor-pointer hover:bg-gray-700"
+          class="px-4 py-3 cursor-pointer hover:bg-gray-700 border-b border-gray-700"
         >
-          <p class="text-gray-200">{{ product.nameProdeduct }}</p>
-          <p class="text-xs text-gray-400">
-            {{
-              `${product.nameProdeduct}, ${product.kcal} ккал, КБЖУ: ${product.protein}г белков, ${product.fat}г жиров, ${product.carbs}г углеводов`
-            }}
-          </p>
+          <div class="flex justify-between">
+            <div>
+              <p class="text-gray-200">{{ product.name }}</p>
+              <p class="text-xs text-gray-400">
+                {{
+                  ` ${product.calories} ккал, КБЖУ: ${product.proteins}г белков, ${product.fats}г жиров, ${product.carbs}г углеводов`
+                }}
+              </p>
+            </div>
+            <div class="flex gap-3">
+              <img class="w-8 h-8 m-auto" src="/Button_Like.png" alt="Plus" />
+              <img class="w-8 h-8 m-auto" src="/Button.png" alt="Plus" />
+            </div>
+          </div>
         </li>
       </ul>
     </div>
