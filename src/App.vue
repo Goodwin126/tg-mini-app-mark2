@@ -11,7 +11,8 @@ const waterStore = useWaterStore()
 <template>
   <div class="flex-col">
     <Header />
-    <span class="username">{{ tg.initDataUnsafe?.user?.username }}</span>
+    <span class="text-2xl-bold text-white">{{ tg.initDataUnsafe?.user?.first_name }}</span>
+    <span class="text-2xl-bold text-white">{{ tg.initDataUnsafe?.user?.id }}</span>
     <div class="place-content-center mt-10 touch-none select-none m-4">
       <transition name="fade" mode="out-in">
         <router-view></router-view>
