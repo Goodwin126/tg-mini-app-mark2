@@ -1,4 +1,37 @@
-<script setup></script>
+<script setup>
+import { ref, inject } from 'vue'
+import axios from 'axios'
+
+// Получение необходимых функций и данных из контекста
+const { closeInputWater } = inject('InputWaterOpen&Close')
+const water = inject('water')
+const BACKEND_URL = inject('BACKEND_URL')
+const userId = inject('userId')
+const today = inject('today')
+
+// Локальная переменная для хранения пользовательского ввода
+const customAmount = ref(0)
+
+// Метод для отправки данных о воде
+const sendWaterData = async () => {
+  try {
+    await axios.put(`${BACKEND_URL}/balance/water`, {
+      user_id: userId,
+      date: today,
+      water: water.value
+    })
+  } catch (error) {
+    console.error('An error occurred while updating water data:', error.message)
+  }
+}
+
+// Функция для закрытия модального окна и отправки данных
+const closeInputWaterSendWaterData = async () => {
+  water.value += parseInt(customAmount.value)
+  await sendWaterData()
+  closeInputWater()
+}
+</script>
 
 <template>
   <div class="fixed top-0 left-0 h-full w-full bg-black opacity-70 z-10"></div>
@@ -15,21 +48,18 @@
             type="number"
             v-model="customAmount"
           />
-          <router-link to="/water">
-            <button
-              @click="handleCustomAmount"
-              class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5 w-full"
-            >
-              Готово
-            </button>
-          </router-link>
-          <router-link to="/water">
-            <button
-              class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5 w-full"
-            >
-              Назад
-            </button>
-          </router-link>
+          <button
+            @click="closeInputWaterSendWaterData"
+            class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5 w-full"
+          >
+            Готово
+          </button>
+          <button
+            @click="closeInputWater"
+            class="text-white bg-blue-800 rounded-lg text-sm px-5 text-center mt-1 p-2.5 w-full"
+          >
+            Назад
+          </button>
         </div>
       </div>
     </div>
@@ -47,4 +77,3 @@
   -moz-appearance: textfield; /* Удаление стрелочек в Firefox */
 }
 </style>
--->

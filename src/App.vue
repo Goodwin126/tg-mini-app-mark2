@@ -22,6 +22,14 @@ const proteins = ref(0)
 const fats = ref(0)
 const carbs = ref(0)
 const nutritionProgram = ref('')
+const InputWaterOpen = ref(false)
+
+const closeInputWater = () => {
+  InputWaterOpen.value = false
+}
+const openInputWater = () => {
+  InputWaterOpen.value = true
+}
 
 // Передача переменных через provide
 provide('BACKEND_URL', BACKEND_URL)
@@ -35,6 +43,10 @@ provide('nutritionProgram', nutritionProgram)
 provide('userName ', userName)
 provide('userId', userId)
 provide('normwater', normwater)
+provide('InputWaterOpen&Close', {
+  openInputWater,
+  closeInputWater
+})
 
 // Передаем функцию анимации нажатия и состояние дочерним компонентам
 const shrinkButton = (buttonId) => {
@@ -76,7 +88,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <InputWater />
+  <InputWater v-if="InputWaterOpen" />
   <div class="flex flex-col">
     <Header />
     <div class="place-content-center mt-10 touch-none select-none m-4">
