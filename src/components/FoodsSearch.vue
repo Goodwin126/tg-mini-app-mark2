@@ -1,31 +1,92 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, inject } from 'vue'
+import axios from 'axios'
+
+// Получаем userId с помощью inject
+const userId = inject('userId')
+
+// Получение переменных из родительского компонента
+const BACKEND_URL = inject('BACKEND_URL')
 
 const props = defineProps({
   items: Array
 })
 
+// Состояния для хранения поискового запроса и результатов поиска
 const searchQuery = ref('')
 const searchResults = ref([])
 
+// Состояние для хранения ID продукта, на который нажали для добавления в избранное
+const clickedFavoriteProductId = ref(null)
+// Состояние для хранения ID продукта, на который нажали для другого действия
+const clickedOtherProductId = ref(null)
+
+// Функция для обработки поиска
 const handleSearch = () => {
   if (searchQuery.value.trim() === '') {
     searchResults.value = []
     return
   }
 
+  // Фильтруем и ограничиваем результаты до 4 элементов
   searchResults.value = props.items
     .filter((product) =>
       product.name.toLowerCase().includes(searchQuery.value.trim().toLowerCase())
     )
-    .slice(0, 4) // Ограничиваем вывод до 4 элементов
+    .slice(0, 4)
 }
 
+// Наблюдаем за изменениями в поисковом запросе и вызываем handleSearch при изменениях
 watch(searchQuery, handleSearch)
+
+// Функция для добавления продукта в избранное
+const addToFavorites = async (product) => {
+  try {
+    // Устанавливаем clickedFavoriteProductId для анимации
+    clickedFavoriteProductId.value = product.id
+
+    // Отправляем POST-запрос на бекенд для добавления записи в таблицу "favorites"
+    const response = await axios.post(`${BACKEND_URL}/favorites`, {
+      user_id: userId,
+      name_of_the_dish: product.name,
+      calories: product.calories,
+      proteins: product.proteins,
+      fats: product.fats,
+      carbs: product.carbs
+    })
+    console.log('Product added to favorites:', response.data)
+
+    // Сбрасываем clickedFavoriteProductId после небольшой задержки, чтобы анимация завершилась
+    setTimeout(() => {
+      clickedFavoriteProductId.value = null
+    }, 200)
+  } catch (error) {
+    console.error('Error adding product to favorites:', error)
+  }
+}
+
+// Функция для обработки другого действия при нажатии на другую кнопку
+const handleOtherAction = async (product) => {
+  try {
+    // Устанавливаем clickedOtherProductId для анимации
+    clickedOtherProductId.value = product.id
+
+    // Здесь можно выполнить любое другое действие, например, отправить другой запрос
+    console.log('Other action for product:', product)
+
+    // Сбрасываем clickedOtherProductId после небольшой задержки, чтобы анимация завершилась
+    setTimeout(() => {
+      clickedOtherProductId.value = null
+    }, 200)
+  } catch (error) {
+    console.error('Error handling other action:', error)
+  }
+}
 </script>
 
 <template>
   <div class="relative w-full">
+    <!-- Поле ввода для поиска -->
     <input
       v-model="searchQuery"
       class="bg-gray-800 border border-gray-900 text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full py-2.5 px-11 outline-none"
@@ -44,6 +105,7 @@ watch(searchQuery, handleSearch)
         >
           <div class="flex justify-between">
             <div>
+              <!-- Отображаем имя продукта и его характеристики -->
               <p class="text-gray-200">{{ product.name }}</p>
               <p class="text-xs text-gray-400">
                 {{
@@ -52,8 +114,22 @@ watch(searchQuery, handleSearch)
               </p>
             </div>
             <div class="flex gap-3">
-              <img class="w-8 h-8 m-auto" src="/Button_Like.png" alt="Plus" />
-              <img class="w-8 h-8 m-auto" src="/Button.png" alt="Plus" />
+              <!-- Кнопка для добавления в избранное с анимацией -->
+              <img
+                class="w-8 h-8 m-auto transition-transform duration-200"
+                :class="{ 'transform scale-90': clickedFavoriteProductId === product.id }"
+                src="/Button_Like.png"
+                alt="Plus"
+                @click="addToFavorites(product)"
+              />
+              <!-- Кнопка для другого действия с анимацией -->
+              <img
+                class="w-8 h-8 m-auto transition-transform duration-200"
+                :class="{ 'transform scale-90': clickedOtherProductId === product.id }"
+                src="/Button.png"
+                alt="Plus"
+                @click="handleOtherAction(product)"
+              />
             </div>
           </div>
         </li>
@@ -63,8 +139,14 @@ watch(searchQuery, handleSearch)
 </template>
 
 <style scoped>
+/* Стили для списка результатов поиска */
 ul {
   max-height: 20rem; /* Максимальная высота списка результатов */
   overflow-y: auto; /* Включаем прокрутку, если список большой */
+}
+
+/* Добавляем класс для анимации уменьшения */
+.transform.scale-90 {
+  transform: scale(0.9);
 }
 </style>

@@ -1,20 +1,20 @@
 <script setup>
-const props = defineProps({
-  maxWeight: {
-    type: String,
-    default: '600px'
-  },
-  persent: {
-    type: Number,
-    required: true
-  }
+import { inject, computed } from 'vue'
+
+// Получаем инъектированные значения
+const water = inject('water')
+const normwater = inject('normwater')
+const maxWeight = '400px'
+
+const WaitPercentage = computed(() => {
+  return Math.round((water.value / normwater) * 100)
 })
 </script>
 
 <template>
-  <div class="progress-container" :style="[{ 'max-width': maxWeight }]">
+  <div class="progress-container" :style="{ 'max-width': maxWeight }">
     <div class="progress">
-      <div class="progress-bar" :style="[{ width: `${persent}%` }]"></div>
+      <div class="progress-bar" :style="{ width: `${WaitPercentage}%` }"></div>
     </div>
   </div>
 </template>
@@ -25,10 +25,12 @@ const props = defineProps({
   height: 10px;
   border-radius: 4px;
   background: rgb(60, 60, 214);
+
   &-container {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     overflow: hidden;
   }
+
   &-bar {
     background: #000;
     height: 100%;
@@ -36,6 +38,7 @@ const props = defineProps({
     background: #93c5fd;
     transition: 0.5s;
   }
+
   &-percent {
     display: block;
     text-align: center;

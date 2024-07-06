@@ -1,25 +1,15 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { useWaterStore } from '../store/store'
+import { computed, inject } from 'vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 
-const waterStore = useWaterStore()
-
-const isShrunk = ref({})
-
-const shrinkButton = (buttonId) => {
-  isShrunk.value[buttonId] = true
-  setTimeout(() => {
-    isShrunk.value[buttonId] = false
-  }, 100) // Задержка для анимации (в миллисекундах)
-}
+// Получаем функцию и состояние с помощью inject
+const shrinkButton = inject('shrinkButton')
+const isShrunk = inject('isShrunk')
+const water = inject('water')
+const normwater = inject('normwater')
 
 const waterConsumedLiters = computed(() => {
-  return (waterStore.count / 1000).toFixed(2) // Делим на 1000 для перевода в литры и округляем до двух знаков после запятой
-})
-
-const waterPercentage = computed(() => {
-  return ((waterStore.count / waterStore.normPerPerson) * 100).toFixed(2)
+  return (water.value / 1000).toFixed(2) // Делим на 1000 для перевода в литры и округляем до двух знаков после запятой
 })
 </script>
 
@@ -30,9 +20,9 @@ const waterPercentage = computed(() => {
       <div class="ml-0 mt-1.5">
         <p class="text-lg text-blue-300 overflow-auto">Вода {{ waterConsumedLiters }} л.</p>
         <!-- Прогресс-бар -->
-        <ProgressBar maxWeight="300px" waterPercentage :persent="waterPercentage" />
+        <ProgressBar />
         <p class="text-xs text-gray-400 overflow-auto mt-0">
-          рекомендовано {{ (waterStore.normPerPerson / 1000).toFixed(2) }} л.
+          рекомендовано {{ (normwater / 1000).toFixed(2) }} л.
         </p>
       </div>
       <router-link to="/water" class="m-auto mr-0">

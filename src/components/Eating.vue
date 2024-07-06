@@ -1,15 +1,22 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, inject } from 'vue'
 import axios from 'axios'
 import FoodsSearch from './FoodsSearch.vue'
+import Favorites from './Favorites.vue'
 
 // Создаем реактивное состояние для хранения списка продуктов
 const items = ref([])
 
+// Создаем реактивное состояние для активной вкладки
+const activeTab = ref('Продукты')
+
+// Получение переменных из родительского компонента
+const BACKEND_URL = inject('BACKEND_URL')
+
 // Загружаем данные продуктов с сервера при монтировании компонента
 onMounted(() => {
   axios
-    .get('http://localhost:3000/food')
+    .get(`${BACKEND_URL}/food`)
     .then((response) => {
       items.value = response.data
     })
@@ -17,6 +24,11 @@ onMounted(() => {
       console.error('Error fetching data:', error)
     })
 })
+
+// Функция для переключения активной вкладки
+const setActiveTab = (tab) => {
+  activeTab.value = tab
+}
 </script>
 
 <template>
@@ -31,18 +43,35 @@ onMounted(() => {
       </div>
     </div>
     <div class="grid grid-cols-3 rounded-xl p-1 w-full bg-navy gap-1">
-      <div class="flex rounded-md p-1 bg-ready">
+      <div
+        class="flex rounded-md p-1 cursor-pointer"
+        :class="{ 'bg-ready': activeTab !== 'Продукты', 'bg-blue-600': activeTab === 'Продукты' }"
+        @click="setActiveTab('Продукты')"
+      >
         <p class="text-xs text-white p-2 m-auto">Продукты</p>
       </div>
-      <div class="flex rounded-md p-1 bg-ready">
+      <div
+        class="flex rounded-md p-1 cursor-pointer"
+        :class="{ 'bg-ready': activeTab !== 'Избранное', 'bg-blue-600': activeTab === 'Избранное' }"
+        @click="setActiveTab('Избранное')"
+      >
         <p class="text-xs text-white p-2 m-auto">Избранное</p>
       </div>
-      <div class="flex rounded-md p-1 bg-ready">
+      <div
+        class="flex rounded-md p-1 cursor-pointer"
+        :class="{ 'bg-ready': activeTab !== 'Блюда', 'bg-blue-600': activeTab === 'Блюда' }"
+        @click="setActiveTab('Блюда')"
+      >
         <p class="text-xs text-white p-2 m-auto">Блюда</p>
       </div>
     </div>
-    <div class="flex rounded-xl p-1 w-full bg-navy">
+    <!-- Условный рендеринг компонента FoodsSearch -->
+    <div v-if="activeTab === 'Продукты'" class="flex rounded-xl p-1 w-full bg-navy">
       <FoodsSearch :items="items" />
+    </div>
+    <!-- Условный рендеринг компонента Favorites -->
+    <div v-if="activeTab === 'Избранное'" class="flex rounded-xl p-1 w-full bg-navy">
+      <Favorites />
     </div>
     <div class="flex rounded-xl p-1 w-full bg-navy">
       <RouterLink to="/" class="w-full">
@@ -65,5 +94,8 @@ onMounted(() => {
 }
 .bg-ready {
   background-color: rgb(23, 23, 90);
+}
+.bg-blue-600 {
+  background-color: rgb(37, 99, 235);
 }
 </style>

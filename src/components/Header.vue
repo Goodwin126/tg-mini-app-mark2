@@ -1,16 +1,22 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, inject, provide } from 'vue'
 
-import { useWaterStore } from '../store/store'
+// Получаем инъектированные значения
+const normwater = inject('normwater')
+const water = inject('water')
 
-const waterStore = useWaterStore()
 // Вычисляем процент выпитой воды от нормы на человека
 const waterPercentage = computed(() => {
-  const percentage = (waterStore.count / waterStore.normPerPerson) * 100
-  return Math.round(percentage)
+  if (normwater != 0 && water.value != 0) {
+    const percentage = water.value / (normwater / 100)
+    return Math.round(percentage)
+  } else {
+    return 0 // Возвращаем 0, если значения не корректны или нулевые
+  }
 })
 
-// Получаем текущую дату
+provide('waterPercentage', waterPercentage)
+// Получаем текущий день недели
 const date = new Date()
 const daysOfWeek = [
   'Воскресенье',
@@ -39,20 +45,22 @@ const today = ref(daysOfWeek[date.getDay()])
           <img class="absolute" src="/Ellipse 1.png" />
           <div class="mt-4 grid grid-cols-1">
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
-              <img class="w-2,5 h-2,5 m-auto mr-1" src="/Ellipse 6.png" />
+              <img class="w-2.5 h-2.5 m-auto mr-1" src="/Ellipse 6.png" />
               <p class="ml-1 text-white font-bold">30% Жиры</p>
             </div>
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
-              <img class="w-2,5 h-2,5 m-auto mr-1" src="/Ellipse 7.png" />
+              <img class="w-2.5 h-2.5 m-auto mr-1" src="/Ellipse 7.png" />
               <p class="flex ml-1 text-blue-600 font-bold">30% Белки</p>
             </div>
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
-              <img class="w-2,5 h-2,5 m-auto mr-1" src="/Ellipse 8.png" />
-              <p class="flexml-1 text-green-600 font-bold">30% Углеводы</p>
+              <img class="w-2.5 h-2.5 m-auto mr-1" src="/Ellipse 8.png" />
+              <p class="flex ml-1 text-green-600 font-bold">30% Углеводы</p>
             </div>
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-5.5 h-5 m-auto mr-1" src="/water.png" />
-              <p class="flex ml-1 text-blue-300 font-bold">{{ waterPercentage }}% Воды</p>
+              <h1 class="flex ml-1 text-blue-300 font-bold" @click="turnBoom">
+                {{ waterPercentage }}% Воды
+              </h1>
             </div>
           </div>
         </div>
