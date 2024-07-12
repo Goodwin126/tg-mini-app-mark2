@@ -2,11 +2,9 @@
 import { ref, watch, inject } from 'vue'
 import axios from 'axios'
 
-// Получаем userId с помощью inject
 const userId = inject('userId')
-
-// Получение переменных из родительского компонента
 const BACKEND_URL = inject('BACKEND_URL')
+const openInputFoodWithProduct = inject('openInputFoodWithProduct')
 
 const props = defineProps({
   items: Array
@@ -18,8 +16,6 @@ const searchResults = ref([])
 
 // Состояние для хранения ID продукта, на который нажали для добавления в избранное
 const clickedFavoriteProductId = ref(null)
-// Состояние для хранения ID продукта, на который нажали для другого действия
-const clickedOtherProductId = ref(null)
 
 // Функция для обработки поиска
 const handleSearch = () => {
@@ -46,7 +42,7 @@ const addToFavorites = async (product) => {
     clickedFavoriteProductId.value = product.id
 
     // Отправляем POST-запрос на бекенд для добавления записи в таблицу "favorites"
-    const response = await axios.post(`${BACKEND_URL}/favorites`, {
+    await axios.post(`${BACKEND_URL}/favorites`, {
       user_id: userId,
       name_of_the_dish: product.name,
       calories: product.calories,
@@ -54,7 +50,6 @@ const addToFavorites = async (product) => {
       fats: product.fats,
       carbs: product.carbs
     })
-    console.log('Product added to favorites:', response.data)
 
     // Сбрасываем clickedFavoriteProductId после небольшой задержки, чтобы анимация завершилась
     setTimeout(() => {
@@ -66,21 +61,8 @@ const addToFavorites = async (product) => {
 }
 
 // Функция для обработки другого действия при нажатии на другую кнопку
-const handleOtherAction = async (product) => {
-  try {
-    // Устанавливаем clickedOtherProductId для анимации
-    clickedOtherProductId.value = product.id
-
-    // Здесь можно выполнить любое другое действие, например, отправить другой запрос
-    console.log('Other action for product:', product)
-
-    // Сбрасываем clickedOtherProductId после небольшой задержки, чтобы анимация завершилась
-    setTimeout(() => {
-      clickedOtherProductId.value = null
-    }, 200)
-  } catch (error) {
-    console.error('Error handling other action:', error)
-  }
+const handleOtherAction = (product) => {
+  openInputFoodWithProduct(product)
 }
 </script>
 
@@ -125,7 +107,6 @@ const handleOtherAction = async (product) => {
               <!-- Кнопка для другого действия с анимацией -->
               <img
                 class="w-8 h-8 m-auto transition-transform duration-200"
-                :class="{ 'transform scale-90': clickedOtherProductId === product.id }"
                 src="/Button.png"
                 alt="Plus"
                 @click="handleOtherAction(product)"
@@ -137,16 +118,3 @@ const handleOtherAction = async (product) => {
     </div>
   </div>
 </template>
-
-<style scoped>
-/* Стили для списка результатов поиска */
-ul {
-  max-height: 20rem; /* Максимальная высота списка результатов */
-  overflow-y: auto; /* Включаем прокрутку, если список большой */
-}
-
-/* Добавляем класс для анимации уменьшения */
-.transform.scale-90 {
-  transform: scale(0.9);
-}
-</style>

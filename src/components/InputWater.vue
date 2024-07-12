@@ -1,5 +1,5 @@
 <script setup>
-import { ref, inject } from 'vue'
+import { ref, inject, watch } from 'vue'
 import axios from 'axios'
 
 // Получение необходимых функций и данных из контекста
@@ -10,12 +10,17 @@ const userId = inject('userId')
 const today = inject('today')
 
 // Локальная переменная для хранения пользовательского ввода
-const customAmount = ref(0)
+const customAmount = ref('')
 
 // Метод для отправки данных о воде
 const sendWaterData = async () => {
   try {
-    await axios.put(`${BACKEND_URL}/balance/water`, {
+    console.log('Sending water data:', {
+      user_id: userId,
+      date: today,
+      water: water.value
+    })
+    await axios.post(`${BACKEND_URL}/balance/water`, {
       user_id: userId,
       date: today,
       water: water.value
@@ -27,10 +32,19 @@ const sendWaterData = async () => {
 
 // Функция для закрытия модального окна и отправки данных
 const closeInputWaterSendWaterData = async () => {
-  water.value += parseInt(customAmount.value)
-  await sendWaterData()
+  if (customAmount.value) {
+    water.value += parseInt(customAmount.value)
+    await sendWaterData()
+  }
   closeInputWater()
 }
+
+// Обработчик для очистки значения, если оно равно 0
+watch(customAmount, (newValue) => {
+  if (newValue === '0') {
+    customAmount.value = ''
+  }
+})
 </script>
 
 <template>

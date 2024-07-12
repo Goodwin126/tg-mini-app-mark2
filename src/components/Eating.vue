@@ -4,6 +4,9 @@ import axios from 'axios'
 import FoodsSearch from './FoodsSearch.vue'
 import Favorites from './Favorites.vue'
 
+const typeEating = inject('typeEating')
+const toUppercase = ref(typeEating.value.toUpperCase())
+
 // Создаем реактивное состояние для хранения списка продуктов
 const items = ref([])
 
@@ -37,7 +40,9 @@ const setActiveTab = (tab) => {
       <div class="flex rounded-md p-1 bg-blue-800">
         <p class="text-sm font-bold text-white p-1 m-auto">Готово</p>
       </div>
-      <p class="flex text-sm font-bold text-blue-900 m-auto text-gray-200 p-2">ПРИЕМ ПИЩИ</p>
+      <p class="flex text-sm font-bold text-blue-900 m-auto text-gray-200 p-2">
+        {{ toUppercase }}
+      </p>
       <div class="flex rounded-2xl p-3 bg-blue-800">
         <p class="text-sm font-bold text-white m-auto">0 ккал</p>
       </div>

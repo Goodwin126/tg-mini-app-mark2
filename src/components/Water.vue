@@ -15,7 +15,12 @@ const { openInputWater } = inject('InputWaterOpen&Close')
 // Метод для отправки данных о воде
 const sendWaterData = async () => {
   try {
-    await axios.put(`${BACKEND_URL}/balance/water`, {
+    console.log('Sending water data:', {
+      user_id: userId,
+      date: today,
+      water: water.value
+    })
+    await axios.post(`${BACKEND_URL}/balance/water`, {
       user_id: userId,
       date: today,
       water: water.value

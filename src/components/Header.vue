@@ -5,6 +5,13 @@ import { ref, computed, inject, provide } from 'vue'
 const normwater = inject('normwater')
 const water = inject('water')
 
+const TargetFats = inject('TargetFats')
+const TargetCarbs = inject('TargetCarbs')
+const TargetProteins = inject('TargetProteins')
+const fats = inject('fats')
+const proteins = inject('proteins')
+const carbs = inject('carbs')
+
 // Вычисляем процент выпитой воды от нормы на человека
 const waterPercentage = computed(() => {
   if (normwater != 0 && water.value != 0) {
@@ -46,15 +53,19 @@ const today = ref(daysOfWeek[date.getDay()])
           <div class="mt-4 grid grid-cols-1">
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-2.5 h-2.5 m-auto mr-1" src="/Ellipse 6.png" />
-              <p class="ml-1 text-white font-bold">30% Жиры</p>
+              <p class="ml-1 text-white font-bold">{{ (TargetFats / 100) * fats }}% Жиры</p>
             </div>
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-2.5 h-2.5 m-auto mr-1" src="/Ellipse 7.png" />
-              <p class="flex ml-1 text-blue-600 font-bold">30% Белки</p>
+              <p class="flex ml-1 text-blue-600 font-bold">
+                {{ (TargetProteins / 100) * proteins }}% Белки
+              </p>
             </div>
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-2.5 h-2.5 m-auto mr-1" src="/Ellipse 8.png" />
-              <p class="flex ml-1 text-green-600 font-bold">30% Углеводы</p>
+              <p class="flex ml-1 text-green-600 font-bold">
+                {{ (TargetCarbs / 100) * carbs }}% Углеводы
+              </p>
             </div>
             <div class="flex m-auto hover:cursor-pointer transition transform hover:scale-105">
               <img class="w-5.5 h-5 m-auto mr-1" src="/water.png" />

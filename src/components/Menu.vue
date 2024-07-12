@@ -7,10 +7,23 @@ const shrinkButton = inject('shrinkButton')
 const isShrunk = inject('isShrunk')
 const water = inject('water')
 const normwater = inject('normwater')
+const typeEating = inject('typeEating')
 
 const waterConsumedLiters = computed(() => {
   return (water.value / 1000).toFixed(2) // Делим на 1000 для перевода в литры и округляем до двух знаков после запятой
 })
+const turnButton2 = async () => {
+  shrinkButton('Button_2'), (typeEating.value = 'завтрак')
+  console.log(typeEating.value)
+}
+const turnButton3 = async () => {
+  shrinkButton('Button_3'), (typeEating.value = 'обед')
+  console.log(typeEating.value)
+}
+const turnButton4 = async () => {
+  shrinkButton('Button_4'), (typeEating.value = 'ужин')
+  console.log(typeEating.value)
+}
 </script>
 
 <template>
@@ -45,7 +58,7 @@ const waterConsumedLiters = computed(() => {
           src="/Button.png"
           alt="Button_2"
           :class="{ shrunk: isShrunk['Button_2'] }"
-          @click="shrinkButton('Button_2')"
+          @click="turnButton2()"
           class="m-auto hover:cursor-pointer"
         />
       </router-link>
@@ -54,25 +67,29 @@ const waterConsumedLiters = computed(() => {
         <p class="text-lg text-white">Обед</p>
         <p class="text-xs text-gray-400">рекомендовано 540 ккал</p>
       </div>
-      <img
-        src="/Button.png"
-        alt="Button_3"
-        :class="{ shrunk: isShrunk['Button_3'] }"
-        @click="shrinkButton('Button_3')"
-        class="m-auto hover:cursor-pointer mr-0"
-      />
+      <router-link to="/eating" class="m-auto mr-0">
+        <img
+          src="/Button.png"
+          alt="Button_3"
+          :class="{ shrunk: isShrunk['Button_3'] }"
+          @click="turnButton3()"
+          class="m-auto hover:cursor-pointer mr-0"
+        />
+      </router-link>
       <img class="flex-justify-left м-auto ml-0" src="/Ellipse 5.png" />
       <div class="flex flex-col mt-2.5">
         <p class="text-lg text-white">Ужин</p>
         <p class="text-xs text-gray-400">рекомендовано 320 ккал</p>
       </div>
-      <img
-        src="/Button.png"
-        alt="Button_4"
-        :class="{ shrunk: isShrunk['Button_4'] }"
-        @click="shrinkButton('Button_4')"
-        class="m-auto hover:cursor-pointer mr-0"
-      />
+      <router-link to="/eating" class="m-auto mr-0">
+        <img
+          src="/Button.png"
+          alt="Button_4"
+          :class="{ shrunk: isShrunk['Button_4'] }"
+          @click="turnButton4()"
+          class="m-auto hover:cursor-pointer mr-0"
+        />
+      </router-link>
     </div>
   </div>
   <div class="flex grid grid-cols-4 mt-2 touch-none select-none">
