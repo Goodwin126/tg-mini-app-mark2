@@ -27,6 +27,7 @@ const turnButton4 = async () => {
 </script>
 
 <template>
+  <div></div>
   <div class="flex flex-col">
     <div class="flex grid" style="grid-template-columns: 1fr 2fr 1fr">
       <img class="flex-justify-left m-auto ml-0" src="/Ellipse 3.png" />

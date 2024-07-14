@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 
 import { BACKEND_URL } from './config'
 import Header from './components/Header.vue'
+import EnteringGoal from './components/EnteringGoal.vue'
 import InputWater from './components/InputWater.vue'
 import InputFood from './components/InputFood.vue'
 
@@ -26,6 +27,7 @@ const carbs = ref(0)
 const nutritionProgram = ref('')
 const InputWaterOpen = ref(false)
 const InputFoodOpen = ref(false)
+const EnteringGoalOpen = ref(true)
 const selectedProduct = ref(null)
 const TargetFats = ref(500)
 const TargetProteins = ref(1000)
@@ -72,6 +74,7 @@ provide('InputFoodOpen&Close', {
 })
 provide('openInputFoodWithProduct', openInputFoodWithProduct)
 provide('typeEating', typeEating)
+provide('EnteringGoalOpen', EnteringGoalOpen)
 
 // Передаем функцию анимации нажатия и состояние дочерним компонентам
 const shrinkButton = (buttonId) => {
@@ -116,14 +119,13 @@ onMounted(() => {
 </script>
 
 <template>
+  <EnteringGoal v-if="EnteringGoalOpen" />
   <InputWater v-if="InputWaterOpen" />
   <InputFood v-if="InputFoodOpen" :product="selectedProduct" />
   <div class="flex flex-col">
     <Header />
     <div class="place-content-center mt-10 touch-none select-none m-4">
-      <transition name="fade" mode="out-in">
-        <router-view></router-view>
-      </transition>
+      <router-view></router-view>
       <div class="flex w-full h-10 place-content-center text-gray-500">version 1.0</div>
     </div>
   </div>
