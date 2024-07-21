@@ -6,7 +6,8 @@ import ProgressBar from '@/components/ProgressBar.vue'
 const shrinkButton = inject('shrinkButton')
 const isShrunk = inject('isShrunk')
 const water = inject('water')
-const normwater = inject('normwater')
+const TargetWater = inject('TargetWater')
+const TargetCalories = inject('TargetCalories')
 const typeEating = inject('typeEating')
 
 const waterConsumedLiters = computed(() => {
@@ -36,7 +37,7 @@ const turnButton4 = async () => {
         <!-- Прогресс-бар -->
         <ProgressBar />
         <p class="text-xs text-gray-400 overflow-auto mt-0">
-          рекомендовано {{ (normwater / 1000).toFixed(2) }} л.
+          рекомендовано {{ TargetWater.toFixed(1) }} мл.
         </p>
       </div>
       <router-link to="/water" class="m-auto mr-0">
@@ -52,7 +53,9 @@ const turnButton4 = async () => {
       <img class="flex-justify-left m-auto ml-0" src="/Ellipse 4.png" />
       <div class="flex flex-col mt-2.5">
         <p class="text-lg text-white">Завтрак</p>
-        <p class="text-xs text-gray-400">рекомендовано 410 ккал</p>
+        <p class="text-xs text-gray-400">
+          рекомендовано {{ (TargetCalories * 0.5).toFixed(1) }} ккал.
+        </p>
       </div>
       <router-link to="/eating" class="m-auto mr-0">
         <img
@@ -66,7 +69,9 @@ const turnButton4 = async () => {
       <img class="flex-justify-left m-auto ml-0" src="/Ellipse 2.png" />
       <div class="flex flex-col mt-2.5">
         <p class="text-lg text-white">Обед</p>
-        <p class="text-xs text-gray-400">рекомендовано 540 ккал</p>
+        <p class="text-xs text-gray-400">
+          рекомендовано {{ (TargetCalories * 0.355).toFixed(1) }} ккал.
+        </p>
       </div>
       <router-link to="/eating" class="m-auto mr-0">
         <img
@@ -80,7 +85,9 @@ const turnButton4 = async () => {
       <img class="flex-justify-left м-auto ml-0" src="/Ellipse 5.png" />
       <div class="flex flex-col mt-2.5">
         <p class="text-lg text-white">Ужин</p>
-        <p class="text-xs text-gray-400">рекомендовано 320 ккал</p>
+        <p class="text-xs text-gray-400">
+          рекомендовано {{ (TargetCalories * 0.145).toFixed(1) }} ккал.
+        </p>
       </div>
       <router-link to="/eating" class="m-auto mr-0">
         <img

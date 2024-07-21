@@ -8,7 +8,7 @@ const isShrunk = inject('isShrunk')
 const BACKEND_URL = inject('BACKEND_URL')
 const userId = inject('userId')
 const today = inject('today')
-const normwater = inject('normwater')
+const TargetWater = inject('TargetWater')
 const water = inject('water')
 const { openInputWater } = inject('InputWaterOpen&Close')
 
@@ -42,7 +42,7 @@ const handleButtonClick = async (amount, buttonId) => {
   <div class="flex flex-col mt-5">
     <div class="flex place-content-center gap-1">
       <p class="text-xl text-white">Вода: {{ water }} мл.</p>
-      <p class="text-xl font-bold text-blue-900">/{{ normwater.toFixed(1) }} мл. Норма</p>
+      <p class="text-xl font-bold text-blue-900">/{{ TargetWater.toFixed(1) }} мл. Норма</p>
     </div>
     <div class="grid grid-cols-4 place-content-center bg-white mt-5 rounded-xl">
       <div :class="{ shrunk: isShrunk['youself_ml'] }" @click="openInputWater">

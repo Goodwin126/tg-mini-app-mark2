@@ -14,7 +14,7 @@ const isShrunk = ref({})
 const userId = 377288092
 const userName = 'Дмитрий'
 const message = ref('')
-const normwater = 2000
+
 const typeEating = ref(null)
 
 // Инициализация переменных для данных текущей даты
@@ -27,11 +27,13 @@ const carbs = ref(0)
 const nutritionProgram = ref('')
 const InputWaterOpen = ref(false)
 const InputFoodOpen = ref(false)
-const EnteringGoalOpen = ref(true)
+const EnteringGoalOpen = ref(false)
 const selectedProduct = ref(null)
-const TargetFats = ref(500)
-const TargetProteins = ref(1000)
-const TargetCarbs = ref(1500)
+const TargetWater = ref(0)
+const TargetCalories = ref(0)
+const TargetFats = ref(0)
+const TargetProteins = ref(0)
+const TargetCarbs = ref(0)
 
 const closeInputWater = () => {
   InputWaterOpen.value = false
@@ -63,7 +65,8 @@ provide('carbs', carbs)
 provide('nutritionProgram', nutritionProgram)
 provide('userName ', userName)
 provide('userId', userId)
-provide('normwater', normwater)
+provide('TargetWater', TargetWater)
+provide('TargetCalories', TargetCalories)
 provide('InputWaterOpen&Close', {
   openInputWater,
   closeInputWater
@@ -112,9 +115,34 @@ const checkAndAddOrUpdateDailyBalance = async () => {
   }
 }
 
-// Вызов метода checkAndAddOrUpdateDailyBalance при монтировании компонента
+// Метод для проверки наличия записи в таблице goals
+const checkGoalRecord = async () => {
+  try {
+    const response = await axios.post(`${BACKEND_URL}/goals/check`, {
+      user_id: userId
+    })
+
+    if (response.status === 200) {
+      const data = response.data
+      EnteringGoalOpen.value = !data.exists
+      if (data.exists) {
+        TargetWater.value = data.target_water
+        TargetCalories.value = data.target_calories
+        TargetFats.value = data.target_fats
+        TargetProteins.value = data.target_proteins
+        TargetCarbs.value = data.target_carbs
+      }
+    }
+  } catch (error) {
+    message.value = 'An error occurred while checking goal record: ' + error.message
+  }
+}
+provide('checkGoalRecord', checkGoalRecord)
+
+// Вызов методов при монтировании компонента
 onMounted(() => {
   checkAndAddOrUpdateDailyBalance()
+  checkGoalRecord()
 })
 </script>
 

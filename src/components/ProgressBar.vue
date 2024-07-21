@@ -3,11 +3,11 @@ import { inject, computed } from 'vue'
 
 // Получаем инъектированные значения
 const water = inject('water')
-const normwater = inject('normwater')
+const TargetWater = inject('TargetWater')
 const maxWeight = '400px'
 
 const WaitPercentage = computed(() => {
-  return Math.round((water.value / normwater) * 100)
+  return Math.round((water.value / TargetWater.value) * 100)
 })
 </script>
 
